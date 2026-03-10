@@ -1,4 +1,4 @@
-<img width="1210" height="587" alt="image" src="https://github.com/user-attachments/assets/c1ec4cf6-4542-471d-9204-a1b5ced4b576" />**_DOCUMENTATION_**
+**_DOCUMENTATION_**
 fitur-fitur 
 A.LOGIN
 <img width="624" height="782" alt="image" src="https://github.com/user-attachments/assets/88c80b99-8630-43d1-9fd9-7962a737f89e" />
