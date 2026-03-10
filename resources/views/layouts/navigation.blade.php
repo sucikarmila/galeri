@@ -26,11 +26,7 @@
                         {{ __('The Gallery') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('albums.index')" :active="request()->routeIs('albums.*')"
-                                class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
-                        {{ __('Albums') }}
-                    </x-nav-link>
-                </div>
+                    </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -58,8 +54,7 @@
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"
                                         class="!text-white/40 hover:!bg-red-600 hover:!text-white font-bold uppercase text-[9px] tracking-widest py-3"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
+                                        onclick="event.preventDefault(); this.closest('form').submit();">
                                     {{ __('Sign Out') }}
                                 </x-dropdown-link>
                             </form>
@@ -91,11 +86,7 @@
                 {{ __('The Gallery') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('albums.index')" :active="request()->routeIs('albums.*')"
-                                   class="!text-white/60 hover:!bg-white hover:!text-black font-black uppercase text-xs tracking-widest py-4">
-                {{ __('Albums') }}
-            </x-responsive-nav-link>
-        </div>
+            </div>
 
         <div class="pt-4 pb-6 border-t border-white/10 px-6">
             <div class="flex items-center gap-4 mb-6">
@@ -117,8 +108,7 @@
                     @csrf
                     <x-responsive-nav-link :href="route('logout')"
                             class="!text-red-500 !p-0 font-bold uppercase text-[10px] tracking-widest"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                            onclick="event.preventDefault(); this.closest('form').submit();">
                         {{ __('Sign Out') }}
                     </x-responsive-nav-link>
                 </form>

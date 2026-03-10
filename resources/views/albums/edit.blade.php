@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="py-10 bg-gradient-to-br from-black via-gray-900 to-orange-700 min-h-screen">
         <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-4xl font-extrabold text-orange-500 uppercase mb-8">EDIT <span class="text-white">ALBUM</span></h2>
+            <h2 class="text-4xl font-extrabold text-orange-500 uppercase mb-8">UPDATE <span class="text-white">ALBUM</span></h2>
 
             <div class="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-2xl border border-orange-400/30">
                 <form action="{{ route('albums.update', $album->AlbumID) }}" method="POST">

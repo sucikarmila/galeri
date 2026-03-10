@@ -14,7 +14,7 @@
                 </h2>
                 @if(auth()->user()->role == 'admin')
                 <a href="{{ route('albums.create') }}" class="bg-orange-500 text-black font-black px-6 py-3 rounded-full hover:bg-white hover:scale-105 transition-all duration-300 border-2 border-white uppercase text-xs">
-                    + CREATE NEW ALBUM
+                    + ADD YOUR ALBUM
                 </a>
                 @endif
             </div>

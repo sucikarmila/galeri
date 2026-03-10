@@ -4,7 +4,7 @@
             
             <div class="mb-8">
                 <h2 class="text-4xl font-extrabold text-orange-500 uppercase tracking-widest drop-shadow-md">
-                    NEW <span class="text-white">ALBUM</span>
+                    ADD <span class="text-white">ALBUM</span>
                 </h2>
             </div>
 
@@ -32,8 +32,8 @@
                             </a>
                             
                             <button type="submit" 
-                                    class="w-full md:w-auto bg-black text-orange-500 font-black px-12 py-4 rounded-2xl shadow-xl hover:bg-orange-500 hover:text-black hover:scale-105 transition-all duration-300 border-2 border-orange-500 uppercase text-xs tracking-widest">
-                                Save Album
+                                    class="bg-orange-500 text-black font-black px-10 py-3 rounded-2xl hover:bg-black hover:text-orange-500 transition-all uppercase text-xs">
+                             Save Album
                             </button>
                         </div>
                     </form>
