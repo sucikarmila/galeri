@@ -10,8 +10,7 @@
                 
                 <div class="lg:w-2/3 bg-black flex items-center justify-center p-4 md:p-10 relative">
                     <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#f97316 0.5px, transparent 0.5px); background-size: 20px 20px;"></div>
-                    <img src="{{ asset('storage/'.$foto->LokasiFile) }}" 
-                         class="relative z-10 max-w-full max-h-[70vh] object-contain rounded-xl shadow-[0_0_50px_rgba(249,115,22,0.3)] border border-orange-500/20" 
+<img src="{{ asset('storage/fotos/'.$foto->LokasiFile) }}"                         class="relative z-10 max-w-full max-h-[70vh] object-contain rounded-xl shadow-[0_0_50px_rgba(249,115,22,0.3)] border border-orange-500/20" 
                          alt="{{ $foto->JudulFoto }}">
                 </div>
 

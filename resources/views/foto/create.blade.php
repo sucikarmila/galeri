@@ -41,8 +41,19 @@
                                       class="w-full bg-gray-50 border-gray-200 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-inner"></textarea>
                         </div>
 
-                        <input type="hidden" name="AlbumID" value="1">
-
+<div class="mb-6">
+    <label class="block text-black font-black text-xs uppercase tracking-[0.2em] mb-2">Assign to Album</label>
+    <select name="AlbumID" required 
+            class="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3 text-white text-sm focus:border-orange-500 focus:ring-0 transition-all">
+        <option value="" class="text-black" disabled selected>-- Select Album --</option>
+        @foreach($albums as $album)
+            <option value="{{ $album->AlbumID }}" class="text-black">{{ $album->NamaAlbum }}</option>
+        @endforeach
+    </select>
+    @error('AlbumID')
+        <p class="text-red-500 text-[10px] mt-1 italic uppercase font-bold">{{ $message }}</p>
+    @enderror
+</div>
                         <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-100">
                             <a href="{{ route('foto.index') }}" 
                                class="text-gray-500 hover:text-orange-600 font-black text-xs uppercase tracking-widest transition-colors">

@@ -25,6 +25,11 @@
                                 class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
                         {{ __('The Gallery') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('albums.index')" :active="request()->routeIs('albums.*')"
+                                class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
+                        {{ __('Albums') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -80,9 +85,15 @@
                                    class="!text-white/60 hover:!bg-white hover:!text-black font-black uppercase text-xs tracking-widest py-4">
                 {{ __('Overview') }}
             </x-responsive-nav-link>
+
             <x-responsive-nav-link :href="route('foto.index')" :active="request()->routeIs('foto.index')"
                                    class="!text-white/60 hover:!bg-white hover:!text-black font-black uppercase text-xs tracking-widest py-4">
                 {{ __('The Gallery') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('albums.index')" :active="request()->routeIs('albums.*')"
+                                   class="!text-white/60 hover:!bg-white hover:!text-black font-black uppercase text-xs tracking-widest py-4">
+                {{ __('Albums') }}
             </x-responsive-nav-link>
         </div>
 

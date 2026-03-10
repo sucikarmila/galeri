@@ -19,7 +19,8 @@ class FotoController extends Controller
 }
     public function create()
 {
-    return view('foto.create'); 
+    $albums = Album::all(); 
+    return view('foto.create', compact('albums'));
 }
     public function updateKomentar(Request $request, $id)
 {
@@ -48,28 +49,27 @@ public function destroyKomentar($id)
 
     return back()->with('error', 'Gagal menghapus komentar.');
 }
-   public function like($id)
+  public function like($id)
 {
-    $userId = auth()->id();
-    $where = ['FotoID' => $id, 'UserID' => $userId];
-    $existingLike = \App\Models\LikeFoto::where($where)->first();
+    $foto = Foto::findOrFail($id);
+    $user_id = auth()->id();
 
-    if ($existingLike) {
-        $existingLike->delete();
+    $existing_like = LikeFoto::where('FotoID', $id)->where('UserID', $user_id)->first();
+
+    if ($existing_like) {
+        $existing_like->delete();
         $isLiked = false;
     } else {
-        \App\Models\LikeFoto::create([
+        LikeFoto::create([
             'FotoID' => $id,
-            'UserID' => $userId,
+            'UserID' => $user_id,
             'TanggalLike' => now()
         ]);
         $isLiked = true;
     }
 
-    $likesCount = \App\Models\LikeFoto::where('FotoID', $id)->count();
-
     return response()->json([
-        'likes_count' => $likesCount,
+        'likes_count' => $foto->likes()->count(),
         'isLiked' => $isLiked
     ]);
 }
@@ -83,8 +83,8 @@ public function index()
                                 ->where('UserID', auth()->id())->exists();
         
         $foto->all_comments = \App\Models\KomentarFoto::where('FotoID', $foto->FotoID)
-                                ->whereNull('parent_id') // Hanya ambil komentar utama
-                                ->with(['user', 'replies.user']) // Ambil balasan & user-nya sekalian
+                                ->whereNull('parent_id') 
+                                ->with(['user', 'replies.user']) 
                                 ->latest()
                                 ->get();
     }
@@ -108,38 +108,42 @@ public function storeKomentar(Request $request, $id)
 
     return back()->with('success', 'Komentar berhasil ditambahkan!');
 } 
-    public function store(Request $request)
+public function store(Request $request)
 {
     $request->validate([
-        'JudulFoto' => 'required',
+        'JudulFoto' => 'required|string|max:255',
+        'DeskripsiFoto' => 'nullable|string',
         'file' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        'AlbumID' => 'required'
+        'AlbumID' => 'required|exists:albums,AlbumID', 
     ]);
 
-    $path = $request->file('file')->store('photos', 'public');
+    $file = $request->file('file');
+    $namaFile = time() . '_' . $file->getClientOriginalName();
+    $file->move(public_path('storage/fotos'), $namaFile);
 
-    Foto::create([
+    \App\Models\Foto::create([
         'JudulFoto' => $request->JudulFoto,
         'DeskripsiFoto' => $request->DeskripsiFoto,
         'TanggalUnggah' => now(),
-        'LokasiFile' => $path,
+        'LokasiFile' => $namaFile,
         'AlbumID' => $request->AlbumID,
         'UserID' => auth()->id(),
     ]);
 
-    return redirect()->route('foto.index')->with('success', 'Foto berhasil diposting!');
+    return redirect()->route('foto.index')->with('success', 'Foto berhasil ditambahkan ke album!');
 }
 public function edit($id)
 {
     $foto = Foto::findOrFail($id);
-    return view('foto.edit', compact('foto'));
+    $albums = Album::all();
+    return view('foto.edit', compact('foto', 'albums'));
 }
-
 public function update(Request $request, $id)
 {
     $request->validate([
         'JudulFoto' => 'required',
         'DeskripsiFoto' => 'required',
+        'AlbumID' => 'required|exists:albums,AlbumID',
         'file' => 'image|mimes:jpg,jpeg,png|max:2048'
     ]);
 
@@ -147,17 +151,25 @@ public function update(Request $request, $id)
 
     if($request->hasFile('file'))
     {
-        \Storage::disk('public')->delete($foto->LokasiFile);
-        $path = $request->file('file')->store('photos','public');
-        $foto->LokasiFile = $path;
+        $oldFilePath = public_path('storage/fotos/' . $foto->LokasiFile);
+        if (file_exists($oldFilePath)) {
+            unlink($oldFilePath);
+        }
+
+        $file = $request->file('file');
+        $namaFile = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('storage/fotos'), $namaFile);
+        
+        $foto->LokasiFile = $namaFile;
     }
 
     $foto->JudulFoto = $request->JudulFoto;
     $foto->DeskripsiFoto = $request->DeskripsiFoto;
+    $foto->AlbumID = $request->AlbumID; 
     $foto->save();
 
     return redirect()->route('foto.index')->with('success', 'Foto berhasil diupdate!');
-} 
+}
 public function destroy($id)
 {
     $foto = Foto::findOrFail($id);

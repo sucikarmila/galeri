@@ -25,23 +25,23 @@
                             <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-4">Photo</label>
                             <div class="flex flex-col md:flex-row gap-6 items-center">
                                 <div class="relative w-40 h-40 shrink-0">
-                                    <img src="{{ asset('storage/'.$foto->LokasiFile) }}" 
-                                         class="w-full h-full object-cover rounded-3xl border-4 border-orange-500 shadow-xl rotate-2"
-                                         alt="Current Image">
-                                    <div class="absolute -bottom-2 -right-2 bg-black text-white text-[8px] font-black px-3 py-1 rounded-full uppercase">ON</div>
-                                </div>
-                                
-                                <div class="flex-1 w-full">
-                                    <input type="file" name="file" 
-                                           class="block w-full text-sm text-gray-500
-                                                  file:mr-4 file:py-2 file:px-4
-                                                  file:rounded-xl file:border-0
-                                                  file:text-[10px] file:font-black file:uppercase
-                                                  file:bg-black file:text-orange-500
-                                                  hover:file:bg-orange-500 hover:file:text-black
-                                                  file:transition-all file:duration-300
-                                                  bg-gray-50 rounded-xl border border-gray-100 p-1">
-                                </div>
+    <img src="{{ asset('storage/fotos/'.$foto->LokasiFile) }}" 
+         class="w-full h-full object-cover rounded-3xl border-4 border-orange-500 shadow-xl rotate-2"
+         alt="Current Image">
+    <div class="absolute -bottom-2 -right-2 bg-black text-white text-[8px] font-black px-3 py-1 rounded-full uppercase">Current</div>
+</div>
+
+<div class="mb-6">
+    <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Change Album</label>
+    <select name="AlbumID" required 
+            class="w-full bg-gray-50 border-gray-200 rounded-2xl px-5 py-3 text-sm font-bold focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-inner">
+        @foreach($albums as $album)
+            <option value="{{ $album->AlbumID }}" {{ $foto->AlbumID == $album->AlbumID ? 'selected' : '' }}>
+                {{ $album->NamaAlbum }}
+            </option>
+        @endforeach
+    </select>
+</div>
                             </div>
                         </div>
 

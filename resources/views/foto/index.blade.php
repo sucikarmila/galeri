@@ -83,9 +83,9 @@
                                 <tr class="hover:bg-orange-50/50 transition-colors duration-200">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="relative group w-24 h-24">
-                                            <img src="{{ asset('storage/'.$foto->LokasiFile) }}" 
-                                                 class="w-full h-full object-cover rounded-2xl border-2 border-orange-500 shadow-md group-hover:rotate-3 transition-transform duration-300"
-                                                 alt="{{ $foto->JudulFoto }}">
+                                            <img src="{{ asset('storage/fotos/'.$foto->LokasiFile) }}" 
+     class="w-full h-full object-cover rounded-2xl border-2 border-orange-500 shadow-md group-hover:rotate-3 transition-transform duration-300"
+     alt="{{ $foto->JudulFoto }}">
                                         </div>
                                     </td>
                                     

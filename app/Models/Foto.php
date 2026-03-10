@@ -28,4 +28,8 @@ class Foto extends Model
     {
         return $this->belongsTo(User::class, 'UserID', 'id');
     }
+    public function album()
+{
+    return $this->belongsTo(Album::class, 'AlbumID', 'AlbumID');
+}
 }
