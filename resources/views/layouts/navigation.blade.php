@@ -16,17 +16,21 @@
                 </div>
 
                 <div class="hidden space-x-12 sm:-my-px sm:ms-16 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" 
-                                class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
-                        {{ __('Overview') }}
-                    </x-nav-link>
-                    
-                    <x-nav-link :href="route('foto.index')" :active="request()->routeIs('foto.index')"
-                                class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
-                        {{ __('The Gallery') }}
-                    </x-nav-link>
+    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" 
+                class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
+        {{ __('Overview') }}
+    </x-nav-link>
+    
+    <x-nav-link :href="route('albums.index')" :active="request()->routeIs('albums.index')"
+                class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
+        {{ __('Albums') }}
+    </x-nav-link>
 
-                    </div>
+    <x-nav-link :href="route('foto.index')" :active="request()->routeIs('foto.index')"
+                class="text-[10px] uppercase font-bold tracking-[0.2em] !text-white/50 hover:!text-white border-b-2 !border-transparent hover:!border-white transition-all duration-300">
+        {{ __('The Gallery') }}
+    </x-nav-link>
+</div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
