@@ -1,16 +1,13 @@
 <x-app-layout>
-    {{-- Background Gradient Premium --}}
     <div class="py-10 bg-gradient-to-br from-black via-gray-900 to-orange-700 min-h-screen">
         <div class="max-w-7xl mx-auto px-4">
             
-            {{-- Tombol Back --}}
             <a href="{{ route('foto.index') }}" class="group inline-flex items-center text-orange-500 hover:text-white mb-6 transition-all font-black uppercase tracking-widest text-xs drop-shadow-md">
-                <span class="mr-2 group-hover:-translate-x-2 transition-transform">←</span> Kembali ke Galeri
+                <span class="mr-2 group-hover:-translate-x-2 transition-transform">←</span> BACK TO GALLERY
             </a>
 
             <div class="bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-orange-400/30 flex flex-col lg:flex-row min-h-[80vh]">
                 
-                {{-- SISI KIRI: DISPLAY FOTO --}}
                 <div class="lg:w-2/3 bg-black flex items-center justify-center p-4 md:p-10 relative">
                     <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#f97316 0.5px, transparent 0.5px); background-size: 20px 20px;"></div>
                     <img src="{{ asset('storage/'.$foto->LokasiFile) }}" 
@@ -18,17 +15,15 @@
                          alt="{{ $foto->JudulFoto }}">
                 </div>
 
-                {{-- SISI KANAN: DETAIL & KOMENTAR --}}
                 <div class="lg:w-1/3 flex flex-col bg-white h-[80vh]">
                     
-                    {{-- Header Info --}}
                     <div class="p-8 pb-4 shrink-0">
                         <h2 class="text-3xl font-black text-gray-900 leading-tight uppercase tracking-tighter drop-shadow-sm">
                             {{ $foto->JudulFoto }}
                         </h2>
                         <div class="flex items-center gap-2 mt-2 text-[10px] font-black text-orange-600 uppercase tracking-widest">
                             <span class="bg-orange-100 px-2 py-1 rounded">📅 {{ $foto->created_at->format('d M Y') }}</span>
-                            <span class="bg-gray-100 px-2 py-1 rounded text-gray-600 text-[9px]">Oleh: {{ $foto->user->name ?? 'User' }}</span>
+                            <span class="bg-gray-100 px-2 py-1 rounded text-gray-600 text-[9px]">By: {{ $foto->user->name ?? 'User' }}</span>
                         </div>
                         <p class="text-gray-500 mt-4 italic text-sm leading-relaxed border-l-4 border-orange-500 pl-4">
                             "{{ $foto->DeskripsiFoto }}"
@@ -43,18 +38,17 @@
                                 </span>
                                 <div class="flex flex-col items-start">
                                     <span class="like-count font-black text-lg text-gray-900 leading-none">{{ $foto->likes_count }}</span>
-                                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">LIKE</span>
+                                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">LIKES</span>
                                 </div>
                             </button>
 
                             <div class="flex flex-col items-end">
                                 <span class="font-black text-lg text-gray-900 leading-none">{{ $foto->komentars_count }}</span>
-                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">KOMEN</span>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">COMMENT</span>
                             </div>
                         </div>
                     </div>
 
-                    {{-- LIST KOMENTAR (SCROLLABLE) --}}
                     <div class="flex-1 overflow-y-auto p-8 pt-6 custom-scrollbar space-y-6 bg-gray-50/50">
                         @forelse($comments as $k)
                             <div class="flex flex-col gap-3">
@@ -86,7 +80,6 @@
                                     </div>
                                 </div>
 
-                                {{-- Replies --}}
                                 <div id="replies-{{ $k->KomentarID }}" class="hidden ml-12 space-y-3 border-l-2 border-orange-200 pl-4 animate-fade-in">
                                     @foreach($k->replies as $balasan)
                                         <div class="flex gap-2">
@@ -103,12 +96,11 @@
                             </div>
                         @empty
                             <div class="text-center py-10">
-                                <p class="text-gray-400 italic text-[10px] uppercase tracking-widest font-black">Belum ada diskusi...</p>
+                                <p class="text-gray-400 italic text-[10px] uppercase tracking-widest font-black">No discussion yet...</p>
                             </div>
                         @endforelse
                     </div>
 
-                    {{-- INPUT KOMENTAR (STICKY AT BOTTOM) --}}
                     <div class="p-6 bg-white border-t border-gray-100 shrink-0">
                         <div id="reply-info" class="hidden mb-3 text-[10px] text-white font-black bg-black p-3 rounded-xl flex justify-between items-center animate-fade-in uppercase">
                             <span>↩ Membalas: <span id="reply-name" class="text-orange-500"></span></span>
@@ -118,7 +110,7 @@
                         <form action="{{ route('komentar.store', $foto->FotoID) }}" method="POST" class="relative">
                             @csrf
                             <input type="hidden" name="parent_id" id="parent_id">
-                            <textarea name="IsiKomentar" id="input-komentar" rows="2" placeholder="Tulis pendapatmu..." required
+                            <textarea name="IsiKomentar" id="input-komentar" rows="2" placeholder="Input Your Comment.." required
                                       class="w-full bg-gray-100 border-none rounded-2xl p-4 pr-16 text-sm focus:ring-2 focus:ring-orange-500 transition-all resize-none shadow-inner"></textarea>
                             
                             <button class="absolute bottom-3 right-3 bg-orange-500 text-black p-3 rounded-xl hover:bg-black hover:text-orange-500 transition-all shadow-lg group">

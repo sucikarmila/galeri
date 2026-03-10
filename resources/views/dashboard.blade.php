@@ -55,12 +55,12 @@
 
                 <div class="p-10 md:p-16 relative z-10">
                     <div class="max-w-2xl">
-                        <span class="text-orange-500 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">
+                        {{-- <span class="text-orange-500 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">
                             Secure Authentication
                         </span>
                         <h3 class="text-5xl font-black text-white tracking-tight uppercase mb-6 leading-none">
                             ACCESS <span class="text-orange-500">GRANTED.</span>
-                        </h3>
+                        </h3> --}}
                         <p class="text-gray-300 text-sm leading-relaxed tracking-widest mb-10 border-l-4 border-orange-500 pl-6">
                             Sistem galeri telah siap digunakan. Anda dapat mulai mengunggah aset visual, mengatur koleksi album, dan memantau interaksi pengguna melalui panel navigasi utama. 
                         </p>
@@ -68,7 +68,7 @@
                         <div class="flex flex-wrap gap-6">
                             <a href="{{ route('foto.create') }}" class="group flex items-center gap-4 text-white hover:text-orange-500 transition-all">
                                 <span class="w-12 h-px bg-orange-500 group-hover:w-20 transition-all"></span>
-                                <span class="text-[10px] font-black uppercase tracking-[0.5em]">Create New Entry</span>
+                                <span class="text-[10px] font-black uppercase tracking-[0.5em]">Create New Galery</span>
                             </a>
                         </div>
                     </div>

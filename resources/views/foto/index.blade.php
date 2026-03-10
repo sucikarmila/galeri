@@ -16,14 +16,14 @@
                 @if(auth()->user()->role == 'admin')
                     <a href="{{ route('foto.create') }}" 
                        class="bg-orange-500 text-black font-black px-8 py-3 rounded-full shadow-xl hover:bg-orange-600 hover:scale-105 transition-all duration-300 border-2 border-white uppercase text-sm">
-                        + Tambah Foto
+                        + ADD YOUR PHOTO
                     </a>
                 @endif
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                 <div class="bg-white/10 backdrop-blur-lg border border-orange-500/30 p-5 rounded-3xl shadow-2xl flex flex-col justify-between">
-                    <p class="text-orange-400 text-[10px] font-black uppercase tracking-widest mb-2">Total Koleksi</p>
+                    <p class="text-orange-400 text-[10px] font-black uppercase tracking-widest mb-2">TOTAL PHOTO</p>
                     <div class="flex items-end gap-2">
                         <span class="text-4xl font-black text-white leading-none">{{ $fotos->count() }}</span>
                         <span class="text-orange-500 text-xs font-bold uppercase mb-1">Files</span>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="bg-white/10 backdrop-blur-lg border border-orange-500/30 p-5 rounded-3xl shadow-2xl">
-                    <p class="text-orange-400 text-[10px] font-black uppercase tracking-widest mb-2">Akses Level</p>
+                    <p class="text-orange-400 text-[10px] font-black uppercase tracking-widest mb-2">STATUS</p>
                     <div class="flex items-center gap-2">
                         <span class="text-xl font-black text-white uppercase">{{ auth()->user()->role }}</span>
                         <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="bg-white/10 backdrop-blur-lg border border-orange-500/30 p-5 rounded-3xl shadow-2xl">
-                        <p class="text-orange-400 text-[10px] font-black uppercase tracking-widest mb-2">Diskusi</p>
+                        <p class="text-orange-400 text-[10px] font-black uppercase tracking-widest mb-2">Comment</p>
                         <div class="flex items-center gap-2">
                             <span class="text-3xl font-black text-white leading-none">{{ $fotos->sum('komentars_count') }}</span>
                             <span class="text-2xl">💬</span>
@@ -68,12 +68,12 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-black text-orange-400 uppercase">
                             <tr>
-                                <th class="px-6 py-6 text-left text-xs font-black tracking-widest">Foto</th>
-                                <th class="px-6 py-6 text-left text-xs font-black tracking-widest">Deskripsi</th>
-                                <th class="px-6 py-6 text-center text-xs font-black tracking-widest">Interaksi</th>
+                                <th class="px-6 py-6 text-left text-xs font-black tracking-widest">PHOTO</th>
+                                <th class="px-6 py-6 text-left text-xs font-black tracking-widest">DESCRIPTION</th>
+                                <th class="px-6 py-6 text-center text-xs font-black tracking-widest">INTERACTION</th>
                                 <th class="px-6 py-6 text-center text-xs font-black tracking-widest">Detail</th>
                                 @if(auth()->user()->role == 'admin')
-                                    <th class="px-6 py-6 text-right text-xs font-black tracking-widest">Opsi Admin</th>
+                                    <th class="px-6 py-6 text-right text-xs font-black tracking-widest">Option</th>
                                 @endif
                             </tr>
                         </thead>
@@ -115,7 +115,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         <a href="{{ route('foto.show', $foto->FotoID) }}" 
                                            class="inline-flex items-center gap-2 bg-gray-100 hover:bg-black hover:text-white text-black px-4 py-2 rounded-xl transition-all font-black text-xs uppercase tracking-widest border border-gray-200">
-                                            <span>👁️</span> Lihat
+                                            <span>👁️</span> VIEW
                                         </a>
                                     </td>
                                     
@@ -124,13 +124,13 @@
                                             <div class="flex justify-end gap-2">
                                                 <a href="{{ route('foto.edit', $foto->FotoID) }}" 
                                                    class="text-blue-600 hover:text-white hover:bg-blue-600 border-2 border-blue-600 px-4 py-2 rounded-xl transition-all font-bold text-xs uppercase">
-                                                    Edit
+                                                    Update
                                                 </a>
                                                 <form action="{{ route('foto.destroy', $foto->FotoID) }}" method="POST" onsubmit="return confirm('Hapus foto permanen?')">
                                                     @csrf @method('DELETE')
                                                     <button type="submit" 
                                                             class="text-red-600 hover:text-white hover:bg-red-600 border-2 border-red-600 px-4 py-2 rounded-xl transition-all font-bold text-xs uppercase">
-                                                        Hapus
+                                                        DELETE
                                                     </button>
                                                 </form>
                                             </div>

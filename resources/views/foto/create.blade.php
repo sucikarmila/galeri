@@ -4,7 +4,7 @@
             
             <div class="mb-8">
                 <h2 class="text-4xl font-extrabold text-orange-500 uppercase tracking-widest drop-shadow-md">
-                    TAMBAH <span class="text-white">FOTO</span>
+                    ADD <span class="text-white">GALLERY</span>
                 </h2>
             </div>
 
@@ -14,7 +14,7 @@
                         @csrf
                         
                         <div class="mb-6">
-                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Pilih File Foto</label>
+                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">SELECT YOUR FILE</label>
                             <div class="relative group">
                                 <input type="file" name="file" required
                                        class="block w-full text-sm text-gray-500
@@ -26,18 +26,18 @@
                                               file:transition-all file:duration-300
                                               bg-gray-50 rounded-2xl border border-gray-200 p-2">
                             </div>
-                            <p class="text-[10px] text-gray-400 mt-2">*Format yang didukung: JPG, PNG, WEBP.</p>
+                            <p class="text-[10px] text-gray-400 mt-2">"JPG, PNG, WEBP.</p>
                         </div>
 
                         <div class="mb-6">
-                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Judul Foto</label>
-                            <input type="text" name="JudulFoto" placeholder="Masukkan judul menarik..." required
+                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Your Title</label>
+                            <input type="text" name="JudulFoto" placeholder="" required
                                    class="w-full bg-gray-50 border-gray-200 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-inner">
                         </div>
 
                         <div class="mb-8">
-                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Deskripsi</label>
-                            <textarea name="DeskripsiFoto" rows="5" placeholder="Ceritakan tentang foto ini..."
+                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Description</label>
+                            <textarea name="DeskripsiFoto" rows="5" placeholder=""
                                       class="w-full bg-gray-50 border-gray-200 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-inner"></textarea>
                         </div>
 
@@ -46,12 +46,12 @@
                         <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-100">
                             <a href="{{ route('foto.index') }}" 
                                class="text-gray-500 hover:text-orange-600 font-black text-xs uppercase tracking-widest transition-colors">
-                                &larr; Batalkan Postingan
+                                &larr; Back TO Gallery
                             </a>
                             
                             <button type="submit" 
                                     class="w-full md:w-auto bg-black text-orange-500 font-black px-12 py-4 rounded-2xl shadow-xl hover:bg-orange-500 hover:text-black hover:scale-105 transition-all duration-300 border-2 border-orange-500 uppercase text-xs tracking-widest">
-                                Simpan Postingan
+                                Save Photo
                             </button>
                         </div>
                     </form>

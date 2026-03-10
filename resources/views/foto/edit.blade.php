@@ -5,9 +5,8 @@
             <div class="mb-8 flex justify-between items-end">
                 <div>
                     <h2 class="text-4xl font-extrabold text-orange-500 uppercase tracking-widest drop-shadow-md">
-                        EDIT <span class="text-white">FOTO</span>
+                        UPDATE <span class="text-white">GALLERY</span>
                     </h2>
-                    <p class="text-gray-400 text-sm mt-2 italic">Perbarui informasi atau ganti visual koleksimu.</p>
                 </div>
                 <div class="text-right hidden md:block">
                     <span class="text-[10px] font-black text-orange-400 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-orange-500/20">
@@ -23,17 +22,16 @@
                         @method('PUT')
                         
                         <div class="mb-8">
-                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-4">Visual Saat Ini</label>
+                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-4">Photo</label>
                             <div class="flex flex-col md:flex-row gap-6 items-center">
                                 <div class="relative w-40 h-40 shrink-0">
                                     <img src="{{ asset('storage/'.$foto->LokasiFile) }}" 
                                          class="w-full h-full object-cover rounded-3xl border-4 border-orange-500 shadow-xl rotate-2"
                                          alt="Current Image">
-                                    <div class="absolute -bottom-2 -right-2 bg-black text-white text-[8px] font-black px-3 py-1 rounded-full uppercase">Aktif</div>
+                                    <div class="absolute -bottom-2 -right-2 bg-black text-white text-[8px] font-black px-3 py-1 rounded-full uppercase">ON</div>
                                 </div>
                                 
                                 <div class="flex-1 w-full">
-                                    <label class="block font-bold text-[10px] text-gray-400 uppercase mb-2">Ganti File (Opsional)</label>
                                     <input type="file" name="file" 
                                            class="block w-full text-sm text-gray-500
                                                   file:mr-4 file:py-2 file:px-4
@@ -48,13 +46,13 @@
                         </div>
 
                         <div class="mb-6">
-                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Judul Foto</label>
+                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Your Tittle</label>
                             <input type="text" name="JudulFoto" value="{{ $foto->JudulFoto }}" required
                                    class="w-full bg-gray-50 border-gray-200 rounded-2xl px-5 py-3 text-sm font-bold focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-inner">
                         </div>
 
                         <div class="mb-8">
-                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Deskripsi</label>
+                            <label class="block font-black text-xs text-gray-900 uppercase tracking-widest mb-2">Description</label>
                             <textarea name="DeskripsiFoto" rows="5" 
                                       class="w-full bg-gray-50 border-gray-200 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-inner">{{ $foto->DeskripsiFoto }}</textarea>
                         </div>
@@ -62,7 +60,7 @@
                         <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-100">
                             <a href="{{ route('foto.index') }}" 
                                class="text-gray-400 hover:text-black font-black text-xs uppercase tracking-widest transition-colors flex items-center gap-2">
-                                &larr; Batalkan Postingan
+                                &larr; Cancel Update
                             </a>
                             
                             <button type="submit" 
