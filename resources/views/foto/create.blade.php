@@ -42,14 +42,21 @@
                         </div>
 
 <div class="mb-6">
-    <label class="block text-black font-black text-xs uppercase tracking-[0.2em] mb-2">Assign to Album</label>
-    <select name="AlbumID" required 
-            class="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3 text-white text-sm focus:border-orange-500 focus:ring-0 transition-all">
-        <option value="" class="text-black" disabled selected>-- Select Album --</option>
-        @foreach($albums as $album)
-            <option value="{{ $album->AlbumID }}" class="text-black">{{ $album->NamaAlbum }}</option>
-        @endforeach
-    </select>
+    <label class="block text-gray-900 font-black text-xs uppercase tracking-[0.2em] mb-2">Assign to Album</label>
+    <div class="relative">
+        <select name="AlbumID" required 
+                class="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3 text-gray-900 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none cursor-pointer shadow-inner">
+            <option value="" class="text-gray-400" disabled selected>-- Select Album --</option>
+            @foreach($albums as $album)
+                <option value="{{ $album->AlbumID }}" class="text-gray-900">{{ $album->NamaAlbum }}</option>
+            @endforeach
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-orange-500">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+            </svg>
+        </div>
+    </div>
     @error('AlbumID')
         <p class="text-red-500 text-[10px] mt-1 italic uppercase font-bold">{{ $message }}</p>
     @enderror
