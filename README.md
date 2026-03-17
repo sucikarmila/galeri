@@ -1,32 +1,33 @@
 
-# 📸 Website Galeri - Laravel
+# 📸 Website Galeri Foto - Laravel 11
 
-Aplikasi web galeri foto berbasis **Laravel** yang dirancang untuk memungkinkan pengguna(ADMIN) mengunggah, mengelola foto dalam album dengan fitur interaksi sosial seperti like dan komentar(USER).
+[![Laravel Version](https://img.shields.io/badge/Laravel-11.x-red.svg)](https://laravel.com)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Platform galeri foto berbasis web yang dirancang untuk manajemen aset visual secara terstruktur. Memungkinkan **Admin** untuk mengelola album produk/foto secara penuh, serta memberikan ruang bagi **User** untuk berinteraksi melalui sistem sosial.
 
 ---
 
 ## 🎯 Fitur Utama
 
 ### 🔐 Autentikasi & Manajemen User
-- **Sistem Registrasi**: Validasi lengkap untuk pengguna baru.
-- **Login & Logout**: Manajemen session yang aman.
-- **Profil User**: Menyimpan informasi nama lengkap dan email serta password.
+- **Secure System**: Registrasi dan login dengan enkripsi password.
+- **Session Management**: Logout aman dengan proteksi session.
+- **Profile Data**: Penyimpanan informasi kredensial seperti Nama, Email, dan Password.
 
-### 📂 Manajemen Album & Foto
-- **CRUD Album**: Membuat album dengan nama dan deskripsi, serta fitur edit/hapus.
-- **Upload Foto**: Mendukung format JPG, PNG, GIF (Maksimal 2MB).
-- **Manajemen Konten**: Edit informasi foto (judul, deskripsi) dan hapus foto beserta file fisiknya.
+### 📂 Manajemen Album & Foto (Khusus Admin)
+- **Full CRUD Album**: Membuat kategori album dengan nama dan deskripsi khusus.
+- **Smart Upload**: Mendukung format JPG, PNG, GIF dengan limitasi 2MB.
+- **Content Control**: Kemampuan mengedit informasi judul/deskripsi serta menghapus file fisik dari storage.
 
-### 💬 Interaksi Sosial
-- **Like/Unlike**: Fitur interaksi pada foto.
-- **Sistem Komentar**: Pengguna(USER) dapat memberikan masukan kepada postingan .
-- **Real-time Stats**: Menampilkan total likes dan jumlah komentar secara interaktif.
+### 💬 Interaksi Sosial (User & Admin)
+- **Engagement**: Fitur Like dan Unlike untuk setiap foto.
+- **Sistem Komentar**: Ruang diskusi bagi user pada setiap postingan.
+- **Real-time Stats**: Penghitung otomatis jumlah like dan komentar.
 
 ---
 
 ## 🗄️ Database Schema
-
-Struktur relasi antar tabel dalam aplikasi ini:
 
 ```mermaid
 graph TD
@@ -39,19 +40,17 @@ graph TD
     users -->|1:N| like_fotos
 ````
 
-**Detail Tabel:**
+**Detail Tabel Utama:**
 
-  - `users`: id, username, email, name, password .
+  - `users`: id, username, email, name, password.
   - `albums`: AlbumID, NamaAlbum, Deskripsi, UserID, TanggalDibuat.
   - `fotos`: FotoID, JudulFoto, DeskripsiFoto, LokasiFile, AlbumID, UserID, TanggalUnggah.
-  - `komentar_fotos`: KomentarID, FotoID, UserID, parent_id, IsiKomentar, TanggalKomentar.
+  - `komentar_fotos`: KomentarID, FotoID, UserID, parent\_id, IsiKomentar, TanggalKomentar.
   - `like_fotos`: LikeID, FotoID, UserID, TanggalLike.
 
 -----
 
 ## 🚀 Quick Start (Instalasi)
-
-Ikuti langkah berikut untuk menjalankan proyek secara lokal:
 
 1.  **Clone Repository**
 
@@ -75,7 +74,7 @@ Ikuti langkah berikut untuk menjalankan proyek secara lokal:
     ```
 
 4.  **Konfigurasi Database**
-    Edit file `.env` dan sesuaikan:
+    Edit `.env` dan sesuaikan:
 
     ```env
     DB_DATABASE=galeri
@@ -96,21 +95,35 @@ Ikuti langkah berikut untuk menjalankan proyek secara lokal:
     php artisan serve
     ```
 
-    Buka di browser: `http://localhost:8000`
 -----
 
-## 🎓 Spesifikasi Tugas (Tabel Privilege)
+## 🛠️ Troubleshooting & Debugging
 
-| Fitur | User (ADMIN) | User (USERS) |
+Jika menemui kendala saat instalasi, cek langkah berikut:
+
+  - **Error Gambar Tidak Muncul**: Pastikan link storage sudah dibuat dengan `php artisan storage:link`.
+  - **Error Vite / CSS**: Pastikan sudah menjalankan `npm run build` jika di server, atau `npm run dev` saat pengembangan.
+  - **Permission Error**: Jalankan perintah berikut jika folder storage terkunci:
+    ```bash
+    chmod -R 775 storage bootstrap/cache
+    ```
+  - **Reset Database**: Untuk mengulang data dari awal:
+    ```bash
+    php artisan migrate:fresh
+    ```
+
+-----
+
+## 🎓 Spesifikasi Hak Akses
+
+| Fitur | Admin | User  |
 | :--- | :---: | :---: |
 | Registrasi & Login | ✓ | ✓ |
 | Tambah Album & Foto | ✓ | - |
-| Edit/Hapus | ✓ | - |
+| Edit / Hapus Konten | ✓ | - |
 | Like & Komentar | ✓ | ✓ |
 
 -----
-
-
 
 **_DOCUMENTATION_**
 
