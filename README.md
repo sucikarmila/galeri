@@ -1,30 +1,156 @@
-<img width="1210" height="587" alt="image" src="https://github.com/user-attachments/assets/c1ec4cf6-4542-471d-9204-a1b5ced4b576" />**_DOCUMENTATION_**
+
+# 📸 Website Galeri - Laravel
+
+Aplikasi web galeri foto berbasis **Laravel** yang dirancang untuk memungkinkan pengguna(ADMIN) mengunggah, mengelola foto dalam album dengan fitur interaksi sosial seperti like dan komentar(USER).
+
+---
+
+## 🎯 Fitur Utama
+
+### 🔐 Autentikasi & Manajemen User
+- **Sistem Registrasi**: Validasi lengkap untuk pengguna baru.
+- **Login & Logout**: Manajemen session yang aman.
+- **Profil User**: Menyimpan informasi nama lengkap dan email serta password.
+
+### 📂 Manajemen Album & Foto
+- **CRUD Album**: Membuat album dengan nama dan deskripsi, serta fitur edit/hapus.
+- **Upload Foto**: Mendukung format JPG, PNG, GIF (Maksimal 2MB).
+- **Manajemen Konten**: Edit informasi foto (judul, deskripsi) dan hapus foto beserta file fisiknya.
+
+### 💬 Interaksi Sosial
+- **Like/Unlike**: Fitur interaksi pada foto.
+- **Sistem Komentar**: Pengguna(USER) dapat memberikan masukan kepada postingan .
+- **Real-time Stats**: Menampilkan total likes dan jumlah komentar secara interaktif.
+
+---
+
+## 🗄️ Database Schema
+
+Struktur relasi antar tabel dalam aplikasi ini:
+
+```mermaid
+graph TD
+    users -->|1:N| albums
+    users -->|1:N| fotos
+    albums -->|1:N| fotos
+    fotos -->|1:N| komentar_fotos
+    fotos -->|1:N| like_fotos
+    users -->|1:N| komentar_fotos
+    users -->|1:N| like_fotos
+````
+
+**Detail Tabel:**
+
+  - `users`: id, username, email, name, password .
+  - `albums`: AlbumID, NamaAlbum, Deskripsi, UserID, TanggalDibuat.
+  - `fotos`: FotoID, JudulFoto, DeskripsiFoto, LokasiFile, AlbumID, UserID, TanggalUnggah.
+  - `komentar_fotos`: KomentarID, FotoID, UserID, parent_id, IsiKomentar, TanggalKomentar.
+  - `like_fotos`: LikeID, FotoID, UserID, TanggalLike.
+
+-----
+
+## 🚀 Quick Start (Instalasi)
+
+Ikuti langkah berikut untuk menjalankan proyek secara lokal:
+
+1.  **Clone Repository**
+
+    ```bash
+    git clone [https://github.com/sucikarmila/galeri.git](https://github.com/sucikarmila/galeri.git)
+    cd galeri
+    ```
+
+2.  **Install Dependencies**
+
+    ```bash
+    composer install
+    npm install && npm run build
+    ```
+
+3.  **Setup Environment**
+
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4.  **Konfigurasi Database**
+    Edit file `.env` dan sesuaikan:
+
+    ```env
+    DB_DATABASE=galeri
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+5.  **Migrasi & Storage Link**
+
+    ```bash
+    php artisan migrate
+    php artisan storage:link
+    ```
+
+6.  **Jalankan Aplikasi**
+
+    ```bash
+    php artisan serve
+    ```
+
+    Buka di browser: `http://localhost:8000`
+-----
+
+## 🎓 Spesifikasi Tugas (Tabel Privilege)
+
+| Fitur | User (ADMIN) | User (USERS) |
+| :--- | :---: | :---: |
+| Registrasi & Login | ✓ | ✓ |
+| Tambah Album & Foto | ✓ | - |
+| Edit/Hapus | ✓ | - |
+| Like & Komentar | ✓ | ✓ |
+
+-----
+
+
+
+**_DOCUMENTATION_**
+
 fitur-fitur 
+
 A.LOGIN
+
 <img width="624" height="782" alt="image" src="https://github.com/user-attachments/assets/88c80b99-8630-43d1-9fd9-7962a737f89e" />
 
 B.REGISTER
+
 <img width="644" height="885" alt="image" src="https://github.com/user-attachments/assets/3b261179-9afa-4bff-8eda-b6573365a100" />
 
 C.DASHBOARD
+
 <img width="1703" height="886" alt="image" src="https://github.com/user-attachments/assets/d6a30424-241a-47c7-be8c-9ba7aee7fbdb" />
 
 D.GALERY
+
 a. ADD YOUR Gallery
+
 <img width="779" height="762" alt="image" src="https://github.com/user-attachments/assets/9364ae44-a6cd-4862-8073-a60ef39beab2" />
 
 b.Update Your Gallery
+
 <img width="825" height="786" alt="image" src="https://github.com/user-attachments/assets/821de028-2834-410d-8361-9a446291369d" />
 
 c.READ
+
 <img width="1272" height="644" alt="image" src="https://github.com/user-attachments/assets/730a5b4f-4161-4d5a-8b7c-8165f69e13f8" />
 
 
 d. VIEW
+
 <img width="1304" height="785" alt="image" src="https://github.com/user-attachments/assets/03589d24-8a2a-466e-9b82-a72f2e27f067" />
 
 E.ALBUM
+
 a.ADD ALBUM
+
 <img width="831" height="581" alt="image" src="https://github.com/user-attachments/assets/ca19aee6-5dc4-4556-88f6-ee28cd769702" />
 
 
